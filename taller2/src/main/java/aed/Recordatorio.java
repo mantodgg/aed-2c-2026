@@ -30,8 +30,21 @@ public class Recordatorio {
 
     @Override
     public boolean equals(Object otro) {
-        // Implementar
-        return true;
+        boolean otroEsNull = (otro == null);
+
+        if (otroEsNull) {
+            return false;
+        }
+
+        boolean claseDistinta = otro.getClass() != this.getClass();
+
+        if (claseDistinta) {
+            return false;
+        }
+        
+        Recordatorio otroRecordatorio = (Recordatorio) otro;
+        return (otroRecordatorio.fecha == this.fecha && otroRecordatorio.horario == this.horario && otroRecordatorio.mensaje == this.mensaje);
+        
     }
 
 }
