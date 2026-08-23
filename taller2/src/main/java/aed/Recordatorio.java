@@ -43,8 +43,7 @@ public class Recordatorio {
         }
         
         Recordatorio otroRecordatorio = (Recordatorio) otro;
-        return (otroRecordatorio.fecha.equals(this.fecha) && otroRecordatorio.horario.equals(this.horario) && otroRecordatorio.mensaje == this.mensaje);
-
+        return (otroRecordatorio.fecha.equals(this.fecha) && otroRecordatorio.horario.equals(this.horario) && otroRecordatorio.mensaje == this.mensaje); //recordar que los objetos no pueden ser comparados con == (hay que compararlos con .equals)
     }
 
 }
