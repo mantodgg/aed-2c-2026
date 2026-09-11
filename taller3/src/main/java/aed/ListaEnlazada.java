@@ -39,7 +39,6 @@ public class ListaEnlazada<T> {
             nuevo.siguiente = primero;
             primero.anterior = nuevo;
             primero = nuevo;
-
         }
         
 
@@ -71,6 +70,25 @@ public class ListaEnlazada<T> {
     }
 
     public void eliminar(int i) {
+        Nodo nodo = primero;
+        int contador = 0;
+        while (i != contador) {
+            nodo = nodo.siguiente;
+            contador += 1;
+        }
+        
+        if (nodo.anterior != null) {
+            nodo.anterior.siguiente = nodo.siguiente;
+        } else {
+            primero = nodo.siguiente;
+        }
+
+        if (nodo.siguiente != null) {
+            nodo.siguiente.anterior = nodo.anterior;
+        } else {
+            ultimo = nodo.anterior;
+        }
+
         ;
     }
 
