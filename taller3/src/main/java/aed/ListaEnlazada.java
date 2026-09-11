@@ -87,13 +87,18 @@ public class ListaEnlazada<T> {
             nodo.siguiente.anterior = nodo.anterior;
         } else {
             ultimo = nodo.anterior;
-        }
-
-        ;
+        };
     }
 
     public void modificarPosicion(int indice, T elem) {
-        throw new UnsupportedOperationException("No implementada aun");
+        Nodo nodo = primero;
+        int contador = 0;
+        while (indice != contador) {
+            nodo = nodo.siguiente;
+            contador += 1;
+        }
+
+        nodo.valor = elem;
     }
 
     public ListaEnlazada(ListaEnlazada<T> lista) {
