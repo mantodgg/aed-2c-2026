@@ -112,7 +112,14 @@ public class ListaEnlazada<T> {
     
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("No implementada aun");
+        String string = "[";
+        Nodo nodo = primero;
+        while (nodo != null) {
+            string += string + nodo.valor + ", ";
+            nodo = nodo.siguiente;
+        } 
+        string += "]";
+        return string;
     }
 
     public class ListaIterador{
