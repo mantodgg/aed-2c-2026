@@ -123,28 +123,34 @@ public class ListaEnlazada<T> {
     }
 
     public class ListaIterador{
-    	// Completar atributos privados
+    	private Nodo actual; 
+
+        ListaIterador(Nodo inicio) {
+            actual = inicio;
+        }
 
         public boolean haySiguiente() {
-	        throw new UnsupportedOperationException("No implementada aun");
+            return actual.siguiente != null;
         }
         
         public boolean hayAnterior() {
-	        throw new UnsupportedOperationException("No implementada aun");
+	        return actual.anterior != null;
         }
 
         public T siguiente() {
-	        throw new UnsupportedOperationException("No implementada aun");
+            actual = actual.siguiente;
+	        return actual.valor;
         }
         
 
         public T anterior() {
-	        throw new UnsupportedOperationException("No implementada aun");
+            actual = actual.anterior;
+	        return actual.valor;
         }
     }
 
     public ListaIterador iterador() {
-	    throw new UnsupportedOperationException("No implementada aun");
+	    return new ListaIterador(primero);
     }
 
 }
