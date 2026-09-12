@@ -123,29 +123,38 @@ public class ListaEnlazada<T> {
     }
 
     public class ListaIterador{
-    	private Nodo actual; 
+    	private Nodo proximo; 
+        private Nodo previo;
 
         ListaIterador(Nodo inicio) {
-            actual = inicio;
+            proximo = inicio;
+            if (inicio != null) {
+                previo = inicio.anterior;
+            }
+            previo = null;
         }
 
         public boolean haySiguiente() {
-            return actual.siguiente != null;
+            return proximo != null;
         }
         
         public boolean hayAnterior() {
-	        return actual.anterior != null;
+	        return previo != null;
         }
 
         public T siguiente() {
-            actual = actual.siguiente;
-	        return actual.valor;
+            T valor = proximo.valor;
+            previo = proximo;
+            proximo = proximo.siguiente;
+            return valor;
         }
         
 
         public T anterior() {
-            actual = actual.anterior;
-	        return actual.valor;
+            T valor = previo.valor;
+            proximo = previo;
+            previo = previo.anterior;
+            return valor;
         }
     }
 
