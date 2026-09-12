@@ -114,8 +114,12 @@ public class ListaEnlazada<T> {
     public String toString() {
         String string = "[";
         Nodo nodo = primero;
+        if (nodo != null) {
+            string += nodo.valor;
+            nodo = nodo.siguiente;
+        }
         while (nodo != null) {
-            string += string + nodo.valor + ", ";
+            string += ", " + nodo.valor;
             nodo = nodo.siguiente;
         } 
         string += "]";
