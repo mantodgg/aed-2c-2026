@@ -97,12 +97,17 @@ public class ListaEnlazada<T> {
             nodo = nodo.siguiente;
             contador += 1;
         }
-
         nodo.valor = elem;
     }
 
     public ListaEnlazada(ListaEnlazada<T> lista) {
-        throw new UnsupportedOperationException("No implementada aun");
+        primero = null;
+        ultimo = null;
+        Nodo nodo = lista.primero;
+        while (nodo != null) {
+            agregarAtras(nodo.valor);
+            nodo = nodo.siguiente;
+        }
     }
     
     @Override
