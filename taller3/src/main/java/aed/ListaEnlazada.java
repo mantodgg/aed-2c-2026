@@ -134,8 +134,9 @@ public class ListaEnlazada<T> {
             proximo = inicio;
             if (inicio != null) {
                 previo = inicio.anterior;
-            }
+            } else {
             previo = null;
+            }
         }
 
         public boolean haySiguiente() {
