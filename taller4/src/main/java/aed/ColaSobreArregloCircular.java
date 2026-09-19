@@ -17,7 +17,7 @@ public class ColaSobreArregloCircular implements Cola {
     public void enqueue(int elem) {
         if (!isFull()) {
             arreglo[cantidad] = elem;
-            cantidad ++;
+            cantidad = (cantidad + 1) % arreglo.length;
         } else {
             throw new RuntimeException("Cola llena, hace falta desencolar");
         }
@@ -25,7 +25,13 @@ public class ColaSobreArregloCircular implements Cola {
 
     // Obtiene el elemento del frente (head)
     public int dequeue() {
-        
+        if (!isEmpty()) {
+            int res = arreglo[frente];
+            frente = (frente + 1) % arreglo.length;
+            return res;
+        } else {
+            throw new RuntimeException("Cola vacia, hace falta encolar");
+        }
     }
 
     // Obtiene el elemento del frente (head)
@@ -39,7 +45,7 @@ public class ColaSobreArregloCircular implements Cola {
     }
 
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return cantidad == 0;
     }
 
     public boolean isFull() {
