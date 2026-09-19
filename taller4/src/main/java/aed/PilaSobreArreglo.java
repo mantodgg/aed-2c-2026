@@ -1,28 +1,47 @@
 package aed;
 
 public class PilaSobreArreglo implements Pila {
+    private int[] arreglo;
+    private int capacidad;
+    private int cantidad;
 
     public PilaSobreArreglo(int capacity) {
-        throw new UnsupportedOperationException("No implementada aun");
+        arreglo = new int[capacity];
+        capacidad = capacity;
     }
 
     public void push(int elem) {
-        throw new UnsupportedOperationException("No implementada aun");
+        if (!isFull()) {
+            arreglo[cantidad] = elem;
+            cantidad ++;
+        } else {
+            throw new RuntimeException("Pila llena, hace falta desapilar");
+        }
     }
 
     public int pop() {
-        throw new UnsupportedOperationException("No implementada aun");
+        if (!isEmpty()) {
+            int res = arreglo[cantidad-1];
+            cantidad --;
+            return res;
+        } else {
+            throw new RuntimeException("Pila vacia, hace falta apilar");
+        }
     }
 
     public int top() {
-        throw new UnsupportedOperationException("No implementada aun");
-    }
+        if (!isEmpty()) {
+            return arreglo[cantidad-1];
+        } else {
+            throw new RuntimeException("Pila vacia, hace falta apilar");
+        }
+    }    
 
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return cantidad == 0;
     }
 
     public boolean isFull() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return cantidad == capacidad;
     }
 }
