@@ -16,8 +16,7 @@ public class PilaSobreListaEnlazada implements Pila {
             tail = nuevo;
             head.next = null;
         } else {
-            tail.next = null;
-            nuevo.next = nuevo;
+            tail.next = nuevo;
             tail = nuevo;
         }
     }
