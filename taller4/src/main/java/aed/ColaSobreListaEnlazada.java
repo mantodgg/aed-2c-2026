@@ -3,7 +3,6 @@ package aed;
 public class ColaSobreListaEnlazada implements Cola {
     private Node head;
     private Node tail;
-    private int capacidad;
 
     public ColaSobreListaEnlazada() {
         head = null;
@@ -12,46 +11,41 @@ public class ColaSobreListaEnlazada implements Cola {
 
     public void enqueue(int elem) {
         Node nuevo = new Node(elem);
-        if (head == null) {
+        if (isEmpty()) {
             head = nuevo;
             tail = nuevo;
             head.next = null;
-        } else if (!isFull()) {
+        } else {
             nuevo.next = null;
             tail.next = nuevo;
             tail = nuevo;
-        } else {
-            throw new RuntimeException("Cola llena, hace falta desencolar");
         }
     }
 
     public int dequeue() {
-        throw new UnsupportedOperationException("No implementada aun");
+        if (isEmpty()) {
+            throw new RuntimeException("Cola vacia, hace falta encolar");
+        } else {
+            int res = head.data;
+            head = head.next;
+            tail.next = null;
+            return res;
+        }
     }
 
     public int front() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return head.data;
     }
 
     public int rear() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return tail.data;
     }
 
     public boolean isEmpty() {
         return head == null;
     }
 
-    public int longitud () {
-        int longitud = 0;
-        Node actual = head;
-        while (actual != null) {
-            longitud ++;
-            actual = actual.next;
-        }
-        return longitud;
-    }
-
     public boolean isFull() {
-        return longitud() == capacidad;
+        return false;
     }
 }
