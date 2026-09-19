@@ -4,20 +4,23 @@ public class ColaSobreArregloCircular implements Cola {
     private int[] arreglo;
     private int capacidad;
     private int cantidad;
-    private int frente;
+    private int head;
+    private int tail;
 
     public ColaSobreArregloCircular(int i) {
         arreglo = new int[i];
         capacidad = i;
         cantidad = 0;
-        frente = 0;
+        head = 0;
+        tail = 0;
     }
 
     // Inserta en el final (tail)
     public void enqueue(int elem) {
         if (!isFull()) {
-            arreglo[cantidad] = elem;
-            cantidad = (cantidad + 1) % arreglo.length;
+            arreglo[tail] = elem;
+            tail = (tail + 1) % arreglo.length;
+            cantidad ++;
         } else {
             throw new RuntimeException("Cola llena, hace falta desencolar");
         }
@@ -26,8 +29,9 @@ public class ColaSobreArregloCircular implements Cola {
     // Obtiene el elemento del frente (head)
     public int dequeue() {
         if (!isEmpty()) {
-            int res = arreglo[frente];
-            frente = (frente + 1) % arreglo.length;
+            int res = arreglo[head];
+            head = (head + 1) % arreglo.length;
+            cantidad --;
             return res;
         } else {
             throw new RuntimeException("Cola vacia, hace falta encolar");
