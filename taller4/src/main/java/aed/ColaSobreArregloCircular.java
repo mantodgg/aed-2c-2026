@@ -40,12 +40,12 @@ public class ColaSobreArregloCircular implements Cola {
 
     // Obtiene el elemento del frente (head)
     public int front() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return arreglo[head];
     }
 
     // Obtiene el elemento del final (tail)
     public int rear() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return arreglo[tail];
     }
 
     public boolean isEmpty() {
