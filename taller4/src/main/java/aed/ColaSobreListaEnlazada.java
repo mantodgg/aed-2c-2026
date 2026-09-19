@@ -16,7 +16,6 @@ public class ColaSobreListaEnlazada implements Cola {
             tail = nuevo;
             head.next = null;
         } else {
-            nuevo.next = null;
             tail.next = nuevo;
             tail = nuevo;
         }
