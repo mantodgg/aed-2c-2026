@@ -1,28 +1,60 @@
 package aed;
 
 public class PilaSobreListaEnlazada implements Pila {
+    private Node head;
+    private Node tail;
 
     public PilaSobreListaEnlazada() {
-        throw new UnsupportedOperationException("No implementada aun");
+        head = null;
+        tail = null;
     }
 
     public void push(int elem) {
-        throw new UnsupportedOperationException("No implementada aun");
+        Node nuevo = new Node(elem);
+        if (isEmpty()) {
+            head = nuevo;
+            tail = nuevo;
+            head.next = null;
+        } else {
+            tail.next = null;
+            nuevo.next = nuevo;
+            tail = nuevo;
+        }
     }
 
     public int pop() {
-        throw new UnsupportedOperationException("No implementada aun");
+        if (isEmpty()) {
+            throw new RuntimeException("Pila vacia, hace falta apilar");
+        } 
+        int res = tail.data;
+        if (head == tail) {
+            head = null;
+            tail = null;
+        } else {
+            Node actual = head;
+            while (actual.next != tail) {
+                actual = actual.next;
+            }
+            actual.next = null;
+            tail = actual;
+        }
+        return res;
+
     }
 
     public int top() {
-        throw new UnsupportedOperationException("No implementada aun");
+        if (isEmpty()) {
+            throw new RuntimeException("Pila vacia, hace falta apilar");
+        } else {
+            return tail.data;
+        }
     }
 
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return head == null;
     }
 
     public boolean isFull() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return false;
     }
 }
