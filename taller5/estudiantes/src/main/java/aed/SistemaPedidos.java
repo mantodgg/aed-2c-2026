@@ -2,7 +2,9 @@ package aed;
 import java.util.ArrayList;
 
 public class SistemaPedidos {
-    /*Completar con los atributos privados*/
+    private Nodo primero;
+    private Nodo ultimo;
+    
 
     public SistemaPedidos(){
          throw new UnsupportedOperationException("No implementado aún");
