@@ -29,8 +29,7 @@ public class SistemaPedidos {
         if (pedidosPorId.isEmpty()) {
             throw new NoSuchElementException("no hay pedidos en el sistema");
         }
-        Handle<Pedido> handle = pedidosPorId.get(0);
-        pedidosPorId.remove(pedidosPorId.size()-1);
+        Handle<Pedido> handle = pedidosPorId.remove(pedidosPorId.size()-1);
         handle.eliminar();
         return handle.valor();
     }
@@ -66,6 +65,14 @@ public class SistemaPedidos {
     }
 
     public String obtenerPedidosOrdenadosPorId(){
-        return pedidosPorId.toString();
+        String res = "[";
+        for (int i = pedidosPorId.size() - 1; i >= 0; i--) {
+            res += pedidosPorId.get(i).valor();
+            if (i > 0) {
+                res += ", ";
+            }
+        }
+        res += "]";
+        return res;
     }
 }
