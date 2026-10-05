@@ -19,7 +19,7 @@ public class SistemaPedidos {
 
     private void agregarOrdenado(Handle<Pedido> p){
         int i = 0;
-        while (i < pedidosPorId.size() && pedidosPorId.get(i).compareTo(p) < 0) {
+        while (i < pedidosPorId.size() && pedidosPorId.get(i).compareTo(p) > 0) {
             i ++;
         }
         pedidosPorId.add(i,p);
@@ -30,7 +30,7 @@ public class SistemaPedidos {
             throw new NoSuchElementException("no hay pedidos en el sistema");
         }
         Handle<Pedido> handle = pedidosPorId.get(0);
-        pedidosPorId.remove(0);
+        pedidosPorId.remove(pedidosPorId.size()-1);
         handle.eliminar();
         return handle.valor();
     }
@@ -58,7 +58,7 @@ public class SistemaPedidos {
         if (pedidosPorId.isEmpty()) {
             throw new NoSuchElementException("no hay pedidos en el sistema");
         }
-        return pedidosPorId.get(0).valor();
+        return pedidosPorId.get(pedidosPorId.size()-1).valor();
     }
 
     public String obtenerPedidosEnOrdenDeLlegada(){
