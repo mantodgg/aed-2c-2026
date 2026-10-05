@@ -21,8 +21,8 @@ public class SistemaPedidos {
         int i = 0;
         while (i < pedidosPorId.size() && pedidosPorId.get(i).compareTo(p) < 0) {
             i ++;
-        pedidosPorId.add(i,p);
         }
+        pedidosPorId.add(i,p);
     }
 
     public Pedido proximoPedidoPorId(){
@@ -62,10 +62,10 @@ public class SistemaPedidos {
     }
 
     public String obtenerPedidosEnOrdenDeLlegada(){
-        
+        return pedidosPorLlegada.toString();
     }
 
     public String obtenerPedidosOrdenadosPorId(){
-        throw new UnsupportedOperationException("No implementado aún");
+        return pedidosPorId.toString();
     }
 }
