@@ -55,11 +55,14 @@ public class SistemaPedidos {
     }
 
     public Pedido pedidoMenorId(){
-        throw new UnsupportedOperationException("No implementado aún");
+        if (pedidosPorId.isEmpty()) {
+            throw new NoSuchElementException("no hay pedidos en el sistema");
+        }
+        return pedidosPorId.get(0).valor();
     }
 
     public String obtenerPedidosEnOrdenDeLlegada(){
-        throw new UnsupportedOperationException("No implementado aún");
+        
     }
 
     public String obtenerPedidosOrdenadosPorId(){
