@@ -28,7 +28,7 @@ public class ABB<T extends Comparable<T>> {
     }
 
     public T minimo(){
-        Nodo nodo = new Nodo(raiz.valor);
+        Nodo nodo = raiz;
         T res = raiz.valor;
         while (nodo != null) {
             res = nodo.valor;
@@ -38,7 +38,7 @@ public class ABB<T extends Comparable<T>> {
     }
 
     public T maximo(){
-        Nodo nodo = new Nodo(raiz.valor);
+        Nodo nodo = raiz;
         T res = raiz.valor;
         while (nodo != null) {
             res = nodo.valor;
