@@ -7,7 +7,6 @@ import java.util.*;
 public class ABB<T extends Comparable<T>> {
     private Nodo raiz;
     private int cardinal; 
-    private int altura;
 
     private class Nodo {
         T valor;
@@ -99,9 +98,7 @@ public class ABB<T extends Comparable<T>> {
         return false;
     }
 
-    public void eliminar(T elem){
-        throw new UnsupportedOperationException("No implementada aun");
-    }
+    public void eliminar(T elem){}
 
     public String toString(){
         throw new UnsupportedOperationException("No implementada aun");
