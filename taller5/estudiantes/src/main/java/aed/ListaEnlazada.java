@@ -1,4 +1,4 @@
-package aed;
+
 
 public class ListaEnlazada<T extends Comparable<T>> {
     private int _longitud;
