@@ -98,46 +98,7 @@ public class ABB<T extends Comparable<T>> {
         return false;
     }
 
-    public void eliminar(T elem){
-        Nodo actual = raiz;
-        while (actual != null) {
-            if (actual.valor.compareTo(elem) < 0) {
-                actual = actual.derecho;
-            }
-            else if (actual.valor.compareTo(elem) > 0) {
-                actual = actual.izquierdo;
-            }
-            else {
-                if (actual.derecho != null) {
-                    if (actual.padre == null) {
-                        raiz = actual.derecho;
-                    }
-                    else if (actual == actual.padre.izquierdo) {
-                        actual.padre.izquierdo = actual.derecho;
-                    }
-                    else {
-                        actual.padre.derecho = actual.derecho;
-                    }
-                actual.derecho.padre = actual.padre;
-                }
-                else if (actual.izquierdo != null) {
-                    if (actual.padre == null) {
-                        raiz = actual.izquierdo;
-                    }
-                    else if (actual == actual.padre.izquierdo) {
-                        actual.padre.izquierdo = actual.izquierdo;
-                    }
-                    else {
-                        actual.padre.derecho = actual.izquierdo;
-                    }
-                if (actual.izquierdo != null) actual.izquierdo.padre = actual.padre;
-                }
-            cardinal --;
-            return;    
-            }
-        }
-        return; 
-    }
+    public void eliminar(T elem){}
 
     public String toString(){
         throw new UnsupportedOperationException("No implementada aun");
