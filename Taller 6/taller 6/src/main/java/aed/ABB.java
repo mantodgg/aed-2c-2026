@@ -143,13 +143,48 @@ public class ABB<T extends Comparable<T>> {
     }
 
     public class ABB_Iterador {
-        private Nodo _actual;
+        private Nodo minimoNodo(Nodo raiz) {
+            if (raiz == null) {
+                return null;
+            }
+            while (raiz.izquierdo != null) {
+                raiz = raiz.izquierdo;
+            }
+            return raiz;
+        }
+        
+        private Nodo _actual = minimoNodo(raiz);
 
         public boolean haySiguiente() {            
-            throw new UnsupportedOperationException("No implementada aun");
+            return _actual != null;
         }
-    
+
         public T siguiente() {
+            if (haySiguiente()) {
+                T valor = _actual.valor;
+
+                if (_actual.derecho == null) {
+                    if (_actual.padre.izquierdo == _actual) {
+                        _actual = _actual.padre;
+                        return _actual.valor;
+                    } else {
+                        while (_actual == _actual.padre.derecho) {
+                            _actual = _actual.padre;
+                        }
+                        _actual = _actual.padre;
+                        return _actual.valor;
+                    }
+                }
+                else {
+                    _actual = _actual.derecho;
+                    while (_actual.izquierdo != null) {
+                        _actual = _actual.izquierdo; 
+                    }
+                    return _actual.valor;
+                }
+            } else {
+                throw new NoSuchElementException("No hay siguiente, es el ultimo elemento");
+            }
             
         }
     }
