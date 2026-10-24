@@ -138,8 +138,18 @@ public class ABB<T extends Comparable<T>> {
         return;
     }
 
+    @Override 
     public String toString(){
-        throw new UnsupportedOperationException("No implementada aun");
+        String res = "{";
+        ABB_Iterador iterador = iterador();
+        while(iterador.haySiguiente()) {
+            res += iterador.siguiente();
+            if (iterador.haySiguiente()) {
+                res += ",";
+            }
+        }
+        res += "}";
+        return res;
     }
 
     public class ABB_Iterador {
