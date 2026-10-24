@@ -162,35 +162,39 @@ public class ABB<T extends Comparable<T>> {
         public T siguiente() {
             if (haySiguiente()) {
                 T valor = _actual.valor;
-
-                if (_actual.derecho == null) {
-                    if (_actual.padre.izquierdo == _actual) {
-                        _actual = _actual.padre;
-                        return _actual.valor;
-                    } else {
-                        while (_actual == _actual.padre.derecho) {
-                            _actual = _actual.padre;
-                        }
-                        _actual = _actual.padre;
-                        return _actual.valor;
-                    }
-                }
-                else {
+                if (_actual.derecho != null) {
                     _actual = _actual.derecho;
                     while (_actual.izquierdo != null) {
-                        _actual = _actual.izquierdo; 
+                        _actual = _actual.izquierdo;
                     }
-                    return _actual.valor;
                 }
-            } else {
-                throw new NoSuchElementException("No hay siguiente, es el ultimo elemento");
-            }
+                else if (_actual.padre != null && _actual == _actual.padre.izquierdo) {
+                    _actual = _actual.padre;
+                }
+                else if (_actual.padre != null && _actual == _actual.padre.derecho ) {
+                    while (_actual.padre != null && _actual != _actual.padre.izquierdo) {
+                        _actual = _actual.padre;
+                    }
+                    if (_actual.padre != null) {
+                        _actual = _actual.padre;
+                    } else {
+                        _actual = null;
+                    }
+                } else {
+                    _actual = null;
+                }
             
-        }
+            return valor;
+
+            } else {
+                throw new NoSuchElementException("no tiene siguiente");
+            }
+        }  
+            
     }
 
     public ABB_Iterador iterador() {
         return new ABB_Iterador();
     }
-
 }
+
